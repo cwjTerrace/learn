@@ -4,7 +4,9 @@
   "description": "fairyland learn repository",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -19,5 +21,16 @@
   "bugs": {
     "url": "https://github.com/cwjTerrace/learn/issues"
   },
-  "homepage": "https://github.com/cwjTerrace/learn#readme"
+  "homepage": "https://github.com/cwjTerrace/learn#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "@vitejs/plugin-react": "^1.1.3",
+    "vite": "^2.7.2"
+  }
 }
