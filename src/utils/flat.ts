@@ -1,14 +1,16 @@
 /**
  * 实现一个数组拍平
  */
-
-export default function flat(arr: any[], dept = 1) {
+export default function flat(arr: Array<any>, depth: number = 1): Array<any> {
   // TODO
   const newArr: any[] = [];
+  const isArray = (e: any) =>
+    Object.prototype.toString.call(e) === "[object Array]";
   // 递归
-  const innerFlat = (tempArr: any[], newDept: number) => {
+  const innerFlat = (tempArr: Array<any>, newDept: number) => {
+    if (!isArray(tempArr)) return;
     tempArr.forEach((element) => {
-      if (Array.isArray(element) && newDept > 0) {
+      if (isArray(element) && newDept > 0) {
         innerFlat(element, --newDept);
       } else {
         newArr.push(element);
@@ -16,7 +18,9 @@ export default function flat(arr: any[], dept = 1) {
     });
   };
 
-  innerFlat(arr, dept);
+  innerFlat(arr, depth);
 
   return newArr;
 }
+
+[].flat;
