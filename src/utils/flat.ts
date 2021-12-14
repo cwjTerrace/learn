@@ -2,7 +2,6 @@
  * 实现一个数组拍平
  */
 export default function flat(arr: Array<any>, depth: number = 1): Array<any> {
-  // TODO
   const newArr: any[] = [];
   const isArray = (e: any) => Object.prototype.toString.call(e) === "[object Array]";
   console.log("入口数组: ", arr);
