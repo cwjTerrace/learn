@@ -1,24 +1,51 @@
 /**
  * 实现一个神拷贝
  */
-const isType = (o: any, type: string) => Object.prototype.toString.call(o) === `[object ${type}]`;
-export default function deepClone(obj: any) {
-  if (isType(obj, "Object")) {
-    const newObj: any = {};
-    Object.keys(obj).forEach((key) => {
-      newObj[key] = deepClone(obj[key]);
-      console.log(obj[key]);
+
+export default function deepClone(source: any, hash = new WeakMap()) {
+  if (!isObject(source)) return source;
+  if (hash.has(source)) return hash.get(source); // 新增代码，查哈希表
+
+  let cloneTarget = (["Object", "Arguments", "Set", "Map", "Array"] as Array<string | null>).includes(getType(source))
+    ? new source.constructor()
+    : source;
+  hash.set(source, cloneTarget);
+
+  if ((["Object", "Arguments"] as Array<string | null>).includes(getType(source))) {
+    // 解决 symbols无法被Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回的问题
+    [Object.keys(source), Object.getOwnPropertySymbols(source)].flat().forEach((key) => {
+      cloneTarget[key] = deepClone(source[key]);
     });
-    return newObj;
+  }
+  if (getType(source) === "Set") {
+    source.forEach((e: any) => {
+      cloneTarget.add(deepClone(e, hash));
+    });
+  }
+  if (getType(source) === "Map") {
+    source.forEach((value: any, key: any) => {
+      cloneTarget.set(key, deepClone(value, hash));
+    });
+  }
+  if (getType(source) === "Array") {
+    source.forEach((e: any) => {
+      cloneTarget.push(deepClone(e, hash));
+    });
   }
 
-  if (isType(obj, "Array")) {
-    const newArray: any[] = [];
-    obj.forEach((e: any) => {
-      newArray.push(e);
-    });
-    return newArray;
+  if (getType(source) === "Symbol") {
+    console.log(22222222, source);
   }
 
-  return obj;
+  return cloneTarget;
+}
+
+function getType(o: any) {
+  const types = Object.prototype.toString.call(o).match(/\[object (\S*)\]/);
+  return types ? types[1] : null;
+}
+
+function isObject(target: any) {
+  const type = typeof target;
+  return target !== null && (type === "object" || type === "function");
 }

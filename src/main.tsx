@@ -10,10 +10,13 @@ console.log("结果:", flatArr);
 const symbol = Symbol("symbol");
 const obj = {
   [symbol]: "symbol",
+  symbol: Symbol("symbol"),
   undefined: undefined,
   number: 1,
   string: "string",
   function: () => console.log(1),
+  map: new Map([["key", "value"]]),
+  set: new Set("1"),
   obj: {
     a: "b",
     b: {
@@ -28,9 +31,8 @@ const obj = {
 };
 // 循环引用
 // obj.aaa = obj;
-console.log(obj[symbol]);
 const deepCloneObj = deepClone(obj);
-console.log("结果:", deepCloneObj, obj.function == deepCloneObj.function);
+console.log("结果:", deepCloneObj, obj.symbol == deepCloneObj.symbol);
 const deepCloneObj2: any = {};
 Object.assign(deepCloneObj2, obj);
 console.log("结果:", deepCloneObj2, obj.obj.b == deepCloneObj2.obj.b);
