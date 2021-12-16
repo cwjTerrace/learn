@@ -1,5 +1,5 @@
 /**
- * 实现一个神拷贝
+ * 实现一个深拷贝
  */
 
 export default function deepClone(source: any, hash = new WeakMap()) {
