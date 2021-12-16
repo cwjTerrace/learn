@@ -1,7 +1,8 @@
 import getType from "./get_type";
+import flat from "./flat";
 
 /**
- * 实现一个深拷贝
+ * 深拷贝
  */
 
 export default function deepClone(source: any, hash = new WeakMap()) {
@@ -15,7 +16,7 @@ export default function deepClone(source: any, hash = new WeakMap()) {
 
   if ((["Object", "Arguments"] as Array<string | null>).includes(getType(source))) {
     // 解决 symbols无法被Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回的问题
-    [Object.keys(source), Object.getOwnPropertySymbols(source)].flat().forEach((key) => {
+    flat([Object.keys(source), Object.getOwnPropertySymbols(source)]).forEach((key) => {
       cloneTarget[key] = deepClone(source[key]);
     });
   }

@@ -1,7 +1,7 @@
 import getType from "./get_type";
 
 /**
- * 实现一个数组拍平
+ * 数组拍平
  */
 export default function flat(arr: Array<any>, depth: number = 1): Array<any> {
   const newArr: any[] = [];
