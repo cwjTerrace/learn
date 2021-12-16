@@ -1,3 +1,5 @@
+import getType from "./get_type";
+
 /**
  * 实现一个深拷贝
  */
@@ -38,11 +40,6 @@ export default function deepClone(source: any, hash = new WeakMap()) {
   }
 
   return cloneTarget;
-}
-
-function getType(o: any) {
-  const types = Object.prototype.toString.call(o).match(/\[object (\S*)\]/);
-  return types ? types[1] : null;
 }
 
 function isObject(target: any) {
