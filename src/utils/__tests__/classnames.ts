@@ -1,7 +1,6 @@
 /* global describe, it */
-import assert from 'assert';
-
-var classNames = require("../classnames");
+import assert from "assert";
+import classNames from "../classnames";
 
 describe("classNames", function () {
   it("keeps object keys with truthy values", function () {
@@ -110,7 +109,7 @@ describe("classNames", function () {
 
   it("handles toString() method defined inherited in object", function () {
     var Class1 = function () {};
-    var Class2 = function () {};
+    var Class2: any = function () {}; // TODO 先给个any顶一下
     Class1.prototype.toString = function () {
       return "classFromMethod";
     };
