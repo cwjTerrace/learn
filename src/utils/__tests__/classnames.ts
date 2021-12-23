@@ -1,5 +1,5 @@
 /* global describe, it */
-import assert from "assert";
+import * as assert from "assert";
 import classNames from "../classnames";
 
 describe("classNames", function () {

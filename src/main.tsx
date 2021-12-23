@@ -4,6 +4,7 @@ import Layout from "./layout";
 
 import flat from "./utils/flat";
 import deepClone from "./utils/deep_clone";
+import classnames from "./utils/classnames";
 
 const flatArr = flat([[1, 2, 3, , , [6666, 7777]], [2], 3]);
 console.log("结果:", flatArr);
@@ -41,6 +42,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Layout>
       <div>new flatArr : {JSON.stringify(flatArr)}</div>
+      <div>{classnames(obj)}</div>
     </Layout>
   </React.StrictMode>,
   document.getElementById("root")
