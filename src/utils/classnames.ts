@@ -1,6 +1,6 @@
 import getType from "./get_type";
 
-export type Value = string | number | boolean | undefined | null;
+export type Value = string | number | boolean | undefined | null | Function;
 export type Mapping = Record<string, any>;
 export interface ArgumentArray extends Array<Argument> {}
 export type Argument = Value | Mapping | ArgumentArray;
@@ -26,6 +26,9 @@ const classnames = (...args: ArgumentArray): any => {
       }
       if (["String", "Number"].includes(getType(e)!)) {
         r.push(e as string | number);
+      }
+      if ("Function" === getType(e)) {
+        r.push(classnames((e as Function)()));
       }
     });
   }
