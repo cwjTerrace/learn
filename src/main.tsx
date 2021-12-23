@@ -5,7 +5,7 @@ import Layout from "./layout";
 import flat from "./utils/flat";
 import deepClone from "./utils/deep_clone";
 
-const flatArr = flat([[1, 2, 3, , , [6666, 7777]], 2, 3]);
+const flatArr = flat([[1, 2, 3, , , [6666, 7777]], [2], 3]);
 console.log("结果:", flatArr);
 const symbol = Symbol("symbol");
 const obj = {
@@ -35,11 +35,13 @@ const deepCloneObj = deepClone(obj);
 console.log("结果:", deepCloneObj, obj.symbol == deepCloneObj.symbol);
 const deepCloneObj2: any = {};
 Object.assign(deepCloneObj2, obj);
-console.log("结果:", deepCloneObj2, obj.obj.b == deepCloneObj2.obj.b);
+// console.log("结果:", deepCloneObj2, obj.obj.b == deepCloneObj2.obj.b);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Layout>new flatArr : {JSON.stringify(flatArr)}</Layout>
+    <Layout>
+      <div>new flatArr : {JSON.stringify(flatArr)}</div>
+    </Layout>
   </React.StrictMode>,
   document.getElementById("root")
 );
