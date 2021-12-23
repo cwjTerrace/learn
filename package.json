@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/cwjTerrace/learn/issues"
   },
-  "homepage": "https://github.com/cwjTerrace/learn#readme",
+  "homepage": "https://cwjTerrace.github.io/learn",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
