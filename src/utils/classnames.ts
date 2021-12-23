@@ -21,11 +21,11 @@ const classnames = (...args: ArgumentArray): string => {
       r.push(item as string | number);
     }
   }
-  // 先拍平
-  const newArr = args.flat(Infinity);
+  // 拍平后只剩下 Mapping | Value 两种数据类型
+  const flatArr = args.flat(Infinity);
 
-  newArr.forEach((e) => {
-    toArr(e);
+  flatArr.forEach((i: Mapping | Value) => {
+    toArr(i);
   });
 
   return r.join(" ");
