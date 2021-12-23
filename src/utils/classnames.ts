@@ -1,4 +1,4 @@
-import getType from "./get_type";
+import getType from "./get-type";
 
 export type Value = string | number | boolean | undefined | null;
 export type Mapping = Record<string, unknown>;
@@ -17,11 +17,11 @@ const classnames = (...args: ArgumentArray): string => {
         }
       });
     }
-    if (item && ["String", "Number"].includes(getType(item)!)) {
+    if (item && ["String", "Number"].includes(getType(item))) {
       r.push(item as string | number);
     }
   }
-
+  // 先拍平
   const newArr = args.flat(Infinity);
 
   newArr.forEach((e) => {

@@ -1,4 +1,4 @@
-export default function getType(obj: any) {
+export default function getType(obj: any): string {
   const types = Object.prototype.toString.call(obj).match(/\[object (\S*)\]/);
-  return types ? types[1] : null;
+  return types![1];
 }

@@ -1,4 +1,4 @@
-import getType from "./get_type";
+import getType from "./get-type";
 
 /**
  * 数组拍平
