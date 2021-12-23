@@ -12,7 +12,7 @@ export default function flat(arr: Array<any>, depth: number = 1): Array<any> {
     if (getType(tempArr) !== "Array") return;
     tempArr.forEach((element) => {
       if (getType(element) === "Array" && newDept > 0) {
-        innerFlat(element, --newDept);
+        innerFlat(element, newDept - 1);
       } else {
         newArr.push(element);
       }
