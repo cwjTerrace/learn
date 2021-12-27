@@ -5,6 +5,7 @@ import Layout from "./layout";
 import flat from "./utils/flat";
 import deepClone from "./utils/deep-clone";
 import classnames from "./utils/classnames";
+import Promise from "./utils/promise";
 
 const flatArr = flat([[1, 2, 3, , , [6666, 7777]], [2], 3]);
 console.log("结果:", flatArr);
@@ -37,6 +38,16 @@ console.log("结果:", deepCloneObj, obj.symbol == deepCloneObj.symbol);
 const deepCloneObj2: any = {};
 Object.assign(deepCloneObj2, obj);
 // console.log("结果:", deepCloneObj2, obj.obj.b == deepCloneObj2.obj.b);
+
+new Promise((resolve, rejects) => {
+  console.log(Date.now());
+  setTimeout(() => {
+    console.log(Date.now());
+    resolve("willem");
+  }, 2000);
+}).then((value) => {
+  console.log(value);
+});
 
 ReactDOM.render(
   <React.StrictMode>
