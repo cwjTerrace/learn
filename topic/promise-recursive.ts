@@ -3,11 +3,11 @@
  * 要求：
  * 初始化立即查询一次，请求完成后每1s查询一次，5s没有结果抛出超时。
  */
-const poll: () => Promise<"completed" | "timeout"> = async () => {
+const poll: () => Promise<"completed" | "error" | "timeout"> = async () => {
   const maxTime = 5000;
   const time = performance.now();
 
-  const getStatus: () => Promise<"completed" | "timeout"> = async () => {
+  const getStatus: () => Promise<"completed" | "error" | "timeout"> = async () => {
     const res = await requestStatus();
     console.log(res);
     // 非checking状态停止轮训
@@ -29,13 +29,13 @@ const poll: () => Promise<"completed" | "timeout"> = async () => {
   return getStatus();
 };
 
-type Status = "checking" | "completed";
+type Status = "checking" | "completed" | "error";
 
 function requestStatus(): Promise<Status> {
   const random = Math.floor(Math.random() * 8);
   return new Promise((resolve) => {
     setTimeout(() => {
-      const res = weightRandom({ checking: 6, completed: 2 });
+      const res = weightRandom({ checking: 6, completed: 2, error: 1 });
       resolve(res);
     }, random * 200);
   });
