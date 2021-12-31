@@ -8,15 +8,14 @@ const poll: () => Promise<"completed" | "error" | "timeout"> = async () => {
   const time = performance.now();
 
   const getStatus: () => Promise<"completed" | "error" | "timeout"> = async () => {
+    // 超时
+    if (performance.now() - time > maxTime) {
+      return "timeout";
+    }
     const res = await requestStatus();
     // 非checking状态停止轮训
     if (res !== "checking") {
       return res;
-    }
-
-    // 超时
-    if (performance.now() - time >= maxTime) {
-      return "timeout";
     }
 
     return new Promise((resolve) => {
@@ -75,10 +74,22 @@ function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
 }
 
-Promise.all(new Array(100).fill(1).map(() => poll())).then((pollRestus) => {
+/**
+ * 测试是否通过
+ */
+Promise.all(
+  new Array(100).fill(1).map(async () => {
+    const time = performance.now();
+    const res = await poll();
+    return {
+      result: res,
+      time: (performance.now() - time) / 1000
+    };
+  })
+).then((pollRestus) => {
   pollRestus.forEach((item) => {
-    if (!["completed", "error", "timeout"].includes(item)) {
-      throw new Error(`test failed! shoud get "completed" | "error" | "timeout", but got ${item}`);
+    if (!["completed", "error", "timeout"].includes(item.result)) {
+      throw new Error(`test failed! shoud get "completed" | "error" | "timeout", but got ${JSON.stringify(item)}`);
     }
   });
   console.info("Congratulations successed");
