@@ -10,7 +10,7 @@ const poll: () => Promise<"completed" | "error" | "timeout"> = async () => {
 type Status = "checking" | "completed" | "error";
 
 /**
- * 服务端接口 无需关心内部实现
+ * 服务端接口 最长1.6返回结果 无需关心内部实现
  */
 function requestStatus(): Promise<Status> {
   const random = Math.floor(Math.random() * 8);
@@ -22,7 +22,7 @@ function requestStatus(): Promise<Status> {
   });
 }
 
-/** --------------  其他工具函数 -------------- */
+/** --------------  其他工具函数 无需关心 -------------- */
 
 /**
  * 加权随机数
@@ -81,7 +81,6 @@ Promise.all(
 });
 
 export default poll;
-
 
 /**
 const poll: () => Promise<"completed" | "error" | "timeout"> = async () => {
