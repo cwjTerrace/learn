@@ -7,6 +7,12 @@ import deepClone from "./utils/deep-clone";
 import classnames from "./utils/classnames";
 import Promise from "./utils/promise";
 
+import promiseRecursive from "../topic/promise-recursive";
+
+promiseRecursive().then((res) => {
+  console.log("promiseRecursive", res);
+});
+
 const flatArr = flat([[1, 2, 3, , , [6666, 7777]], [2], 3]);
 console.log("结果:", flatArr);
 const symbol = Symbol("symbol");
