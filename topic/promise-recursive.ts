@@ -9,7 +9,6 @@ const poll: () => Promise<"completed" | "error" | "timeout"> = async () => {
 
   const getStatus: () => Promise<"completed" | "error" | "timeout"> = async () => {
     const res = await requestStatus();
-    console.log(res);
     // 非checking状态停止轮训
     if (res !== "checking") {
       return res;
@@ -75,5 +74,14 @@ function getRandomInt(min: number, max: number) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
 }
+
+Promise.all(new Array(100).fill(1).map(() => poll())).then((pollRestus) => {
+  pollRestus.forEach((item) => {
+    if (!["completed", "error", "timeout"].includes(item)) {
+      throw new Error(`test failed! shoud get "completed" | "error" | "timeout", but got ${item}`);
+    }
+  });
+  console.info("Congratulations successed");
+});
 
 export default poll;
