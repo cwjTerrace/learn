@@ -4,31 +4,14 @@
  * 初始化立即查询一次，请求完成后每1s查询一次，5s没有结果抛出超时。
  */
 const poll: () => Promise<"completed" | "error" | "timeout"> = async () => {
-  const maxTime = 5000;
-  const time = performance.now();
-
-  const getStatus: () => Promise<"completed" | "error" | "timeout"> = async () => {
-    // 超时
-    if (performance.now() - time > maxTime) {
-      return "timeout";
-    }
-    const res = await requestStatus();
-    // 非checking状态停止轮训
-    if (res !== "checking") {
-      return res;
-    }
-
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(getStatus());
-      }, 1000);
-    });
-  };
-  return getStatus();
+  // TODO
 };
 
 type Status = "checking" | "completed" | "error";
 
+/**
+ * 服务端接口 无需关心内部实现
+ */
 function requestStatus(): Promise<Status> {
   const random = Math.floor(Math.random() * 8);
   return new Promise((resolve) => {
@@ -38,6 +21,8 @@ function requestStatus(): Promise<Status> {
     }, random * 200);
   });
 }
+
+/** --------------  其他工具函数 -------------- */
 
 /**
  * 加权随机数
@@ -96,3 +81,30 @@ Promise.all(
 });
 
 export default poll;
+
+
+/**
+const poll: () => Promise<"completed" | "error" | "timeout"> = async () => {
+  const maxTime = 5000;
+  const time = performance.now();
+
+  const getStatus: () => Promise<"completed" | "error" | "timeout"> = async () => {
+    // 超时
+    if (performance.now() - time > maxTime) {
+      return "timeout";
+    }
+    const res = await requestStatus();
+    // 非checking状态停止轮训
+    if (res !== "checking") {
+      return res;
+    }
+
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(getStatus());
+      }, 1000);
+    });
+  };
+  return getStatus();
+};
+ */
