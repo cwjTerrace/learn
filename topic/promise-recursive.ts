@@ -5,6 +5,7 @@
  */
 const poll: () => Promise<"completed" | "error" | "timeout"> = async () => {
   // TODO
+  return "error";
 };
 
 type Status = "checking" | "completed" | "error";
@@ -74,10 +75,10 @@ Promise.all(
 ).then((pollRestus) => {
   pollRestus.forEach((item) => {
     if (!["completed", "error", "timeout"].includes(item.result)) {
-      throw new Error(`test failed! shoud get "completed" | "error" | "timeout", but got ${JSON.stringify(item)}`);
+      throw new Error(`tests failed! shoud get "completed" | "error" | "timeout", but got ${JSON.stringify(item)}`);
     }
   });
-  console.info("Congratulations successed");
+  console.info("Congratulations! tests passed");
 });
 
 export default poll;

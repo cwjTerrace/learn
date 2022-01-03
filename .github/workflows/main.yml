@@ -22,7 +22,7 @@ jobs:
         cache: 'pnpm'
 
     - run: pnpm install
-    - run: pnpm run build
+    - run: pnpm run build:react
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.7

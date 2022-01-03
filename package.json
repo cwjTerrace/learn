@@ -4,9 +4,9 @@
   "description": "fairyland learn repository",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
+    "dev:react": "vite --config vite.react.config.ts",
+    "build:react": "tsc && vite build --config vite.react.config.ts",
+    "preview": "vite preview --config vite.react.config.ts",
     "test": "jest",
     "pregh": "npm run build",
     "gh": "gh-pages -d dist"
