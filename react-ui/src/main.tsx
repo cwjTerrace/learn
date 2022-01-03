@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Layout from "./layout";
 
-import flat from "../utils/flat";
-import deepClone from "../utils/deep-clone";
-import classnames from "../utils/classnames";
-import Promise from "../utils/promise";
+import flat from "../../utils/flat";
+import deepClone from "../../utils/deep-clone";
+import classnames from "../../utils/classnames";
+import Promise from "../../utils/promise";
 
-import promiseRecursive from "../topic/promise-recursive";
+import promiseRecursive from "../../topic/promise-recursive";
 
 promiseRecursive().then((res) => {
   console.log("promiseRecursive", res);
