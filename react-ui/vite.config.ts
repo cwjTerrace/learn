@@ -4,7 +4,6 @@ import merge from "lodash/merge";
 import react from "@vitejs/plugin-react";
 
 import baseConfig from "../vite.config";
-console.log(baseConfig);
 
 const config = defineConfig({
   root: __dirname,
@@ -13,6 +12,6 @@ const config = defineConfig({
     outDir: join(process.cwd(), "dist")
   }
 });
-
+console.log("react-ui merge config", merge(config, baseConfig));
 // https://vitejs.dev/config/
 export default merge(config, baseConfig);
