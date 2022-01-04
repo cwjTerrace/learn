@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { createApp } from "vue";
 import Layout from "./layout";
 
 import flat from "../../utils/flat";
@@ -55,12 +54,6 @@ new Promise((resolve, rejects) => {
   console.log(value);
 });
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Layout>
-      <div>new flatArr : {JSON.stringify(flatArr)}</div>
-      <div>{classnames(obj)}</div>
-    </Layout>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+const app = createApp(Layout);
+// app.use(router);
+app.mount("#app");

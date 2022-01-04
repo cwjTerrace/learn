@@ -1,7 +1,14 @@
-import React from "react";
+import { defineComponent } from "vue";
 
-const Layout: React.FC = (props) => {
-  return <div className="layout">{props.children}</div>;
-};
+const layoutProps = { a: String };
+
+const Layout = defineComponent({
+  name: "Layout",
+  props: layoutProps,
+  setup(props) {
+    console.log(props);
+    return () => <div>1</div>;
+  }
+});
 
 export default Layout;
