@@ -1,17 +1,17 @@
 /**
- * 异步查询接口数据，直到状态非checking，查询完成
- * 要求：
- * 初始化立即查询一次，请求完成后每1s查询一次，5s没有结果抛出超时。
+ * 轮询调用requestStatus接口，直到状态非checking，查询完成
+ * 要求：轮询间隔为1s，5s没有结果抛出超时 timeout。
  */
+// @ts-ignore
 const poll: () => Promise<"completed" | "error" | "timeout"> = async () => {
   // TODO
-  return "error";
 };
 
 type Status = "checking" | "completed" | "error";
 
 /**
- * 服务端接口 最长1.6返回结果 无需关心内部实现
+ * 服务端接口 最快0.2s 最慢1.6s 返回结果 无需关心内部实现
+ * @return "checking" | "completed" | "error"
  */
 function requestStatus(): Promise<Status> {
   const random = Math.floor(Math.random() * 8);
@@ -78,7 +78,7 @@ Promise.all(
       throw new Error(`tests failed! shoud get "completed" | "error" | "timeout", but got ${JSON.stringify(item)}`);
     }
   });
-  console.info("Congratulations! tests passed");
+  console.info("Congratulations! tests passed", pollRestus);
 });
 
 export default poll;
