@@ -1,4 +1,4 @@
-import getType from "./get-type";
+import getType from "../get-type";
 
 export type Value = string | number | boolean | undefined | null;
 export type Mapping = Record<string, unknown>;

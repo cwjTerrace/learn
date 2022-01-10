@@ -1,6 +1,6 @@
 /* global describe, it */
 import * as assert from "assert";
-import classNames from "../classnames";
+import classNames from "..";
 
 describe("classNames", function () {
   it("keeps object keys with truthy values", function () {

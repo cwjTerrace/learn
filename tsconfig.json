@@ -14,7 +14,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@/utils": ["./utils"],
+      "@/topic": ["./topic"]
+    }
   },
   "include": ["react-ui", "topic", "utils"]
 }

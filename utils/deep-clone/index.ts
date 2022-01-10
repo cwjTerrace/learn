@@ -1,5 +1,5 @@
-import getType from "./get-type";
-import flat from "./flat";
+import getType from "../get-type";
+import flat from "../flat";
 
 /**
  * 深拷贝

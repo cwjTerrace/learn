@@ -2,12 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Layout from "./layout";
 
-import flat from "../../utils/flat";
-import deepClone from "../../utils/deep-clone";
-import classnames from "../../utils/classnames";
-import Promise from "../../utils/promise";
+import { flat, deepClone, classnames, myPromise } from "@/utils";
 
-import promiseRecursive from "../../topic/promise-recursive";
+import { promiseRecursive } from "@/topic";
 
 promiseRecursive().then((res) => {
   console.log("promiseRecursive", res);
@@ -45,7 +42,7 @@ const deepCloneObj2: any = {};
 Object.assign(deepCloneObj2, obj);
 // console.log("结果:", deepCloneObj2, obj.obj.b == deepCloneObj2.obj.b);
 
-new Promise((resolve, rejects) => {
+new myPromise((resolve, rejects) => {
   console.log(Date.now());
   setTimeout(() => {
     console.log(Date.now());
