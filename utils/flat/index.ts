@@ -5,8 +5,6 @@ import getType from "../get-type";
  */
 export default function flat(arr: Array<any>, depth: number = 1): Array<any> {
   const newArr: any[] = [];
-
-  console.log("入口数组: ", arr);
   // 递归
   const innerFlat = (tempArr: Array<any>, newDept: number) => {
     if (getType(tempArr) !== "Array") return;
