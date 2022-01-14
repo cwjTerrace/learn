@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+  <title>字重测试地址</title>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<body>
+  <div>
+    <h4>
+      字重展示
+    </h4>
+    <div class="font-list"></div>
+    <br />
+    <div class="current">
+    </div>
+  </div>
+
+  <script>
+    const fontWeightList = ['Thin', 'Extra Light (Ultra Light)', 'Light', 'Regular (Normal、Book、Roman)', 'Medium', 'Semi Bold (Demi Bold)', 'Bold', 'Extra Bold (Ultra Bold)', 'Black (Heavy)']
+    const fontWeightWrapper = document.querySelector('.font-list')
+    fontWeightList.forEach((item, index) => {
+      const fontWeightBody = document.createElement('div')
+      const fontWeight = (index + 1) * 100
+      fontWeightBody.style.setProperty('font-weight', fontWeight)
+      fontWeightBody.style.setProperty('margin-bottom', '10px')
+      fontWeightBody.innerHTML = `<span>一段文本</span> <span>${item}</span> <span>${fontWeight}</span>`
+      fontWeightWrapper.append(fontWeightBody)
+    }, this)
+
+
+
+    function renderedfont(ele) {
+      var getDefaultFonts = function () {
+        var iframe = document.createElement('iframe');
+        var html = '<html><body>';
+        var fonts;
+        document.body.appendChild(iframe);
+        iframe.contentWindow.document.open();
+        iframe.contentWindow.document.write(html);
+        var subele = iframe.contentWindow.document.createElement(ele.tagName);
+        iframe.contentWindow.document.body.appendChild(subele);
+        fonts = getComputedStyle(subele)['font-family'];
+        document.body.removeChild(iframe);
+        return fonts;
+      }
+      var fonts = getComputedStyle(ele)['font-family'] + ',' + getDefaultFonts();
+      var fontsArray = fonts.split(',');
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext("2d");
+      var testString = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()?±";
+      var prevImageData;
+      document.body.appendChild(canvas);
+      canvas.width = 500;
+      canvas.height = 300;
+      fontsArray.unshift('"Font That Doesnt Exists ' + Math.random() + '"');
+
+      for (var i = 0; i < fontsArray.length; i++) {
+        var fontName = fontsArray[i].trim();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.font = '16px ' + fontName + ', monospace';
+        ctx.fillText(testString, 10, 100);
+        var idata = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var data = idata.data
+        if (prevImageData) {
+          for (var j = 0; j < data.length; j += 3) {
+            if (prevImageData[j + 3] !== data[j + 3]) {
+              document.body.removeChild(canvas);
+              console.error(fontName)
+              return fontName;
+            }
+          }
+        }
+        prevImageData = data;
+      }
+
+      document.body.removeChild(canvas);
+      return 'monospace';
+    }
+
+    const res = renderedfont(document.querySelector('.fontWeight500'))
+    document.querySelector('.current').innerHTML = res
+  </script>
+</body>
+
+</html>

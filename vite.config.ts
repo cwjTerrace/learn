@@ -12,5 +12,9 @@ export default defineConfig({
       { find: "@/utils", replacement: join(__dirname, "utils") },
       { find: "@/topic", replacement: join(__dirname, "topic") }
     ]
+  },
+  publicDir: join(__dirname, "public"),
+  server: {
+    host: "0.0.0.0"
   }
 });
