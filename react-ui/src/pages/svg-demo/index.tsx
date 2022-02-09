@@ -3,14 +3,17 @@ import ReactDOM from "react-dom";
 
 import "./index.less";
 
+import aa from "./linear-gradient-circle.svg";
+
 interface SvgDemoProps {
   color: string;
 }
 
 function SvgDemo({ color }: SvgDemoProps) {
   return (
-    <div style={{ "--stop-color": color, height: "10em" } as React.CSSProperties} className="svg-demo">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+    <div style={{ "--stop-color": color } as React.CSSProperties} className="svg-demo">
+      <img src={aa} alt="" />
+      {/* <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
         <defs>
           <linearGradient id="geek">
             <stop offset="0%" stopColor="currentColor" />
@@ -33,7 +36,7 @@ function SvgDemo({ color }: SvgDemoProps) {
 
         <use href="#semi-circle" stroke="url('#geek')" />
         <use href="#semi-circle" stroke="url('#geek1')" transform="rotate(180)" style={{ transformOrigin: "center" }} />
-      </svg>
+      </svg> */}
     </div>
   );
 }
