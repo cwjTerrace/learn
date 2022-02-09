@@ -1,0 +1,39 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink" color="red">
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .linear-gradient-circle {
+            transform-origin: center;
+            animation: spin 1s linear infinite;
+        }
+
+        .semi-circle-top {
+            transform: rotate(180deg);
+            transform-origin: center;
+        }
+    </style>
+    <defs>
+        <linearGradient id="geek">
+            <stop offset="0%" stop-color="currentColor" />
+            <stop offset="50%" stop-color="currentColor" stop-opacity="50%" />
+        </linearGradient>
+        <linearGradient id="geek1">
+            <stop offset="50%" stop-color="currentColor" stop-opacity="50%" />
+            <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+        </linearGradient>
+        <circle id="semi-circle" cx="120" cy="120" r="100" stroke-width="10" stroke-dasharray="314 1000" fill="none" />
+    </defs>
+    <g class="linear-gradient-circle">
+        <use href="#semi-circle" stroke="url('#geek')" />
+        <use href="#semi-circle" stroke="url('#geek1')" class='semi-circle-top' />
+    </g>
+</svg>
