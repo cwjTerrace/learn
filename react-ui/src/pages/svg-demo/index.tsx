@@ -9,13 +9,8 @@ interface SvgDemoProps {
 
 function SvgDemo({ color }: SvgDemoProps) {
   return (
-    <div style={{ "--stop-color": color } as React.CSSProperties} className="svg-demo">
-      <svg
-        height={"10em"}
-        viewBox="0 0 100 100"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-      >
+    <div style={{ "--stop-color": color, height: "10em" } as React.CSSProperties} className="svg-demo">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
         <defs>
           <linearGradient id="geek">
             <stop offset="0%" stopColor="currentColor" />
