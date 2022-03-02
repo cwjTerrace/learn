@@ -59,7 +59,7 @@ ReactDOM.render(
     <Layout>
       <div>new flatArr : {JSON.stringify(flatArr)}</div>
       <div>{classnames(obj)}</div>
-      <SvgDemo color="yellow" />
+      <SvgDemo color="#333" />
     </Layout>
   </React.StrictMode>,
   document.getElementById("root")

@@ -1,9 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import "./index.less";
-
-import aa from "./linear-gradient-circle.svg";
 
 interface SvgDemoProps {
   color: string;
@@ -12,31 +9,53 @@ interface SvgDemoProps {
 function SvgDemo({ color }: SvgDemoProps) {
   return (
     <div style={{ "--stop-color": color } as React.CSSProperties} className="svg-demo">
-      <img src={aa} alt="" />
-      {/* <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-        <defs>
-          <linearGradient id="geek">
-            <stop offset="0%" stopColor="currentColor" />
-            <stop offset="50%" stopColor="currentColor" stopOpacity="50%" />
-          </linearGradient>
-          <linearGradient id="geek1">
-            <stop offset="50%" stopColor="currentColor" stopOpacity="50%" />
-            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
-          </linearGradient>
-          <circle
-            id="semi-circle"
-            cx="50"
-            cy="50"
-            r="40"
-            strokeWidth={20}
-            strokeDasharray={`${Math.PI * 40} 1000`}
-            fill="none"
-          />
-        </defs>
-
-        <use href="#semi-circle" stroke="url('#geek')" />
-        <use href="#semi-circle" stroke="url('#geek1')" transform="rotate(180)" style={{ transformOrigin: "center" }} />
-      </svg> */}
+      <p>css方案</p>
+      <div className="circle">
+        <div className="circle-left" />
+        <div className="circle-right" />
+        <div className="circle-inner" />
+      </div>
+      <div>
+        <p>svg方案</p>
+        <svg
+          width="240"
+          height="240"
+          viewBox="0 0 240 240"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
+          <defs>
+            <linearGradient id="linear-gradient1">
+              <stop offset="0%" stop-color="currentColor" />
+              <stop offset="50%" stop-color="currentColor" stop-opacity="30%" />
+            </linearGradient>
+            <linearGradient id="linear-gradient2">
+              <stop offset="50%" stop-color="currentColor" stop-opacity="30%" />
+              <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+            </linearGradient>
+            <circle
+              id="semi-circle"
+              cx="120"
+              cy="120"
+              r="100"
+              stroke-width="20"
+              stroke-dasharray="314.15926 1000"
+              fill="none"
+            />
+          </defs>
+          <g>
+            <use href="#semi-circle" stroke="url('#linear-gradient1')" />
+            <use
+              href="#semi-circle"
+              stroke="url('#linear-gradient2')"
+              style={{
+                transform: "rotate(180deg)",
+                transformOrigin: "center"
+              }}
+            />
+          </g>
+        </svg>
+      </div>
     </div>
   );
 }
