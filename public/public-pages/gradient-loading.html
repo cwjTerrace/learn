@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渐变loading</title>
+    <style>
+        .svg-demo {
+            padding: 100px;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+
+        svg {
+            width: 100px;
+            height: 100px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .circle {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            animation: spin 1s linear infinite;
+        }
+
+        .circle-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 100px;
+            border-radius: 100px 0 0 100px;
+            background: linear-gradient(to bottom, rgb(51, 51, 51), rgba(51, 51, 51, 0.2));
+        }
+
+        .circle-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 100px;
+            border-radius: 0 100px 100px 0;
+            background: linear-gradient(to top, rgba(51, 51, 51, 0.22), rgba(51, 51, 51, 0));
+        }
+
+        .circle-inner {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="svg-demo">
+        <p>css方案</p>
+        <div class="circle">
+            <div class="circle-left"></div>
+            <div class="circle-right"></div>
+            <div class="circle-inner"></div>
+        </div>
+        <div>
+            <p>svg方案</p>
+            <div id="loading-svg"></div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.17.8/babel.min.js"></script>
+    <script type="text/babel">
+        const svg = <svg
+            width="240"
+            height="240"
+            viewBox="0 0 240 240"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
+            <defs>
+                <linearGradient id="linear-gradient1">
+                    <stop offset="0%" stop-color="currentColor" />
+                    <stop offset="50%" stop-color="currentColor" stop-opacity="30%" />
+                </linearGradient>
+                <linearGradient id="linear-gradient2">
+                    <stop offset="50%" stop-color="currentColor" stop-opacity="30%" />
+                    <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+                </linearGradient>
+                <circle
+                    id="semi-circle"
+                    cx="120"
+                    cy="120"
+                    r="100"
+                    stroke-width="20"
+                    stroke-dasharray="314.15926 1000"
+                    fill="none"
+                />
+            </defs>
+            <g>
+                <use href="#semi-circle" stroke="url('#linear-gradient1')" />
+                <use
+                    href="#semi-circle"
+                    stroke="url('#linear-gradient2')"
+                    style={{
+                        transform: "rotate(180deg)",
+                        transformOrigin: "center"
+                    }}
+                />
+            </g>
+        </svg>
+        ReactDOM.render(svg, document.getElementById('loading-svg'))
+    </script>
+</body>
+
+</html>
