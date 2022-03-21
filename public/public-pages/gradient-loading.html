@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>渐变loading</title>
     <style>
+        body {
+            color: #333;
+        }
+
         .svg-demo {
             padding: 100px;
-            display: inline-block;
-            width: 100px;
-            height: 100px;
         }
 
         svg {
@@ -71,6 +72,7 @@
 
 <body>
     <div class="svg-demo">
+        <h3>渐变空心圆</h3>
         <p>css方案</p>
         <div class="circle">
             <div class="circle-left"></div>
@@ -80,6 +82,9 @@
         <div>
             <p>svg方案</p>
             <div id="loading-svg"></div>
+        </div>
+        <div>
+            <label for="svg-color">svg颜色: </label><input id="svg-color" type="text" value="turquoise">
         </div>
     </div>
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
@@ -123,8 +128,19 @@
                     }}
                 />
             </g>
-        </svg>
-        ReactDOM.render(svg, document.getElementById('loading-svg'))
+        </svg>;
+        const svgRoot = document.getElementById('loading-svg')
+        ReactDOM.render(svg, svgRoot);
+
+        const input = document.getElementById('svg-color')
+
+        svgRoot.lastChild.style.color = input.value;
+
+        function onInput(e) {
+            const value = e.target.value;
+            svgRoot.lastChild.style.color = value;
+        }
+        input.oninput = onInput
     </script>
 </body>
 
