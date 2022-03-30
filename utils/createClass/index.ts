@@ -15,12 +15,14 @@ const gen = (name: string, mods: Mods): string[] => {
   return Object.keys(mods).reduce<string[]>((ret, key) => (mods[key] ? ret.concat(gen(name, key)) : ret), []);
 };
 
-const classNames = (prefixedName: string) => {
-  return (...args: Mods[]): string => {
+const classNames = (prefixedName: string): ((...args: Mods[]) => string) => {
+  return function () {
     const r: string[] = [];
-    args.forEach((el: Mods) => {
-      r.push.apply(r, gen(prefixedName, el));
-    });
+    let i = 0;
+
+    while (i < arguments.length) {
+      r.push.apply(r, gen(prefixedName, arguments[i++]));
+    }
 
     return r.join(" ");
   };
