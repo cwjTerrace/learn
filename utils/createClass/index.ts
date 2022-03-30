@@ -1,7 +1,7 @@
 export type Mod = string | number | null | undefined | boolean | { [key: string]: any };
 export type Mods = Mod | Mod[];
 
-const gen = (name: string, mods: Mods): string[] => {
+function gen(name: string, mods: Mods): string[] {
   if (typeof mods === "boolean" || !mods) {
     return [];
   }
@@ -13,9 +13,9 @@ const gen = (name: string, mods: Mods): string[] => {
     return mods.reduce<string[]>((ret, item) => ret.concat(gen(name, item)), []);
   }
   return Object.keys(mods).reduce<string[]>((ret, key) => (mods[key] ? ret.concat(gen(name, key)) : ret), []);
-};
+}
 
-const classNames = (prefixedName: string): ((...args: Mods[]) => string) => {
+function classNames(prefixedName: string): (...args: Mods[]) => string {
   return function () {
     const r: string[] = [];
     let i = 0;
@@ -26,7 +26,7 @@ const classNames = (prefixedName: string): ((...args: Mods[]) => string) => {
 
     return r.join(" ");
   };
-};
+}
 
 /**
  * classNames helper
@@ -34,9 +34,9 @@ const classNames = (prefixedName: string): ((...args: Mods[]) => string) => {
  * c({ disabled }) // 'button-disabled'
  * c(['disabled', 'primary']) // 'button-disabled button-primary'
  */
-const createClass = (name: string) => {
+function createClass(name: string) {
   const prefixedName = `kc-${name}`;
   return [prefixedName, classNames(prefixedName)] as const;
-};
+}
 
 export default createClass;
