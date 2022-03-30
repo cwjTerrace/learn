@@ -6,7 +6,7 @@ function gen(name: string, mods: Mods): string[] {
     return [];
   }
   if (typeof mods === "string" || typeof mods === "number") {
-    return [`${name}-${mods}`];
+    return [name + mods];
   }
 
   if (Array.isArray(mods)) {
