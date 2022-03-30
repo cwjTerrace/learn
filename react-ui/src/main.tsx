@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import Layout from "./layout";
 
 import SvgDemo from "./pages/svg-demo";
@@ -54,13 +54,11 @@ new myPromise((resolve, rejects) => {
   console.log(value);
 });
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Layout>
-      <div>new flatArr : {JSON.stringify(flatArr)}</div>
-      <div>{classnames(obj)}</div>
-      <SvgDemo color="#333" />
-    </Layout>
-  </React.StrictMode>,
-  document.getElementById("root")
+const root = createRoot(document.getElementById("root")!);
+root.render(
+  <Layout>
+    <div>new flatArr : {JSON.stringify(flatArr)}</div>
+    <div>{classnames(obj)}</div>
+    <SvgDemo color="#333" />
+  </Layout>
 );
