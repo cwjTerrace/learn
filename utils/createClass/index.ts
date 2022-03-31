@@ -1,27 +1,29 @@
 export type Mod = string | number | null | undefined | boolean | { [key: string]: any };
 export type Mods = Mod | Mod[];
 
-function gen(name: string, mods: Mods): string[] {
+export function classNames(mods: Mods, name?: string): string[] {
   if (typeof mods === "boolean" || !mods) {
     return [];
   }
   if (typeof mods === "string" || typeof mods === "number") {
-    return [name + '-' +mods];
+    return [`${name ? `${name}-` : ""}${mods}`];
   }
 
   if (Array.isArray(mods)) {
-    return mods.reduce<string[]>((ret, item) => ret.concat(gen(name, item)), []);
+    return mods.reduce<string[]>((ret, item) => ret.concat(classNames(item, name)), []);
   }
-  return Object.keys(mods).reduce<string[]>((ret, key) => (mods[key] ? ret.concat(gen(name, key)) : ret), []);
+
+  return Object.keys(mods).reduce<string[]>((ret, key) => (mods[key] ? ret.concat(classNames(key, name)) : ret), []);
 }
 
-function classNames(prefixedName: string): (...args: Mods[]) => string {
+function genClass(prefixedName: string): (...args: Mods[]) => string {
   return function () {
     const r: string[] = [];
     let i = 0;
 
     while (i < arguments.length) {
-      r.push.apply(r, gen(prefixedName, arguments[i++]));
+      // eslint-disable-next-line prefer-spread, prefer-rest-params
+      r.push.apply(r, classNames(arguments[i++], prefixedName));
     }
 
     return r.join(" ");
@@ -36,7 +38,7 @@ function classNames(prefixedName: string): (...args: Mods[]) => string {
  */
 function createClass(name: string) {
   const prefixedName = `kc-${name}`;
-  return [prefixedName, classNames(prefixedName)] as const;
+  return [prefixedName, genClass(prefixedName)] as const;
 }
 
 export default createClass;
