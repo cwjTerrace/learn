@@ -16,7 +16,7 @@ export function classNames(mods: Mods, name?: string): string[] {
   return Object.keys(mods).reduce<string[]>((ret, key) => (mods[key] ? ret.concat(classNames(key, name)) : ret), []);
 }
 
-function genClass(prefixedName: string): (...args: Mods[]) => string {
+function genClass(prefixedName?: string): (...args: Mods[]) => string {
   return function () {
     const r: string[] = [];
     let i = 0;
@@ -36,9 +36,11 @@ function genClass(prefixedName: string): (...args: Mods[]) => string {
  * c({ disabled }) // 'button-disabled'
  * c(['disabled', 'primary']) // 'button-disabled button-primary'
  */
-function createClass(name: string) {
-  const prefixedName = `kc-${name}`;
-  return [prefixedName, genClass(prefixedName)] as const;
+function createClass(prefixCls?: string) {
+  return function (name: string) {
+    const prefixedName = `${prefixCls}${name}`;
+    return [prefixedName, genClass(prefixedName), genClass()] as const;
+  };
 }
 
 export default createClass;
