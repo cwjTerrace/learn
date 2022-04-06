@@ -38,10 +38,10 @@ function genClass(prefixedName?: string, connect?: string): (...args: Mods[]) =>
  * c({ disabled }) // 'button-disabled'
  * c(['disabled', 'primary']) // 'button-disabled button-primary'
  */
-function createClass(prefixCls?: string) {
+function createClass(prefixCls?: string, baseConnect?: string) {
   return function (name?: string, connect?: string) {
     const prefixedName = `${prefixCls || ""}${name || ""}`;
-    return [prefixedName, genClass(prefixedName, connect), genClass()] as const;
+    return [prefixedName, genClass(prefixedName, connect || baseConnect), genClass()] as const;
   };
 }
 
