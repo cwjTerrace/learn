@@ -4,7 +4,7 @@ import cls from "..";
 
 const createClass = cls("kc-");
 
-const [prefix, genClass, classNames] = createClass("test");
+const [prefix, genClass, classNames] = createClass("test", "-");
 
 describe("genClass", function () {
   it("should aaa ", function () {
