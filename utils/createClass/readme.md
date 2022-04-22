@@ -7,24 +7,24 @@
 ```javascript
 import cls from 'createClass';
 
- const prefixCls = 'a';
+ const prefixCls = 't';
 
  const createClass = cls(`${prefixCls}-`, '-');
 
 const [prefix, genClass, classNames] = createClass('text');
-// prefix => a-text
-genClass('foo', 'bar'); // => 'a-text-foo a-text-bar'
-genClass('foo', { bar: true }); // => 'a-text-foo a-text-bar'
-genClass({ 'foo-bar': true }); // => 'a-text-foo-bar'
+// prefix => t-text
+genClass('foo', 'bar'); // => 't-text-foo t-text-bar'
+genClass('foo', { bar: true }); // => 't-text-foo t-text-bar'
+genClass({ 'foo-bar': true }); // => 't-text-foo-bar'
 genClass({ 'foo-bar': false }); // => ''
-genClass({ foo: true }, { bar: true }); // => 'a-text-foo a-text-bar'
-genClass({ foo: true, bar: true }); // => 'a-text-foo a-text-bar'
+genClass({ foo: true }, { bar: true }); // => 't-text-foo t-text-bar'
+genClass({ foo: true, bar: true }); // => 't-text-foo t-text-bar'
 // lots of arguments of various types
-genClass('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'a-text-foo a-text-bar a-text-baz a-text-quux'
+genClass('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 't-text-foo t-text-bar t-text-baz t-text-quux'
 // other falsy values are just ignored
-genClass(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'a-text-bar a-text-1'
+genClass(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 't-text-bar t-text-1'
 // Arrays
-genClass('a', ['b', { c: true, d: false }]); // => 'a-text-a a-text-b a-text-c'
+genClass('a', ['b', { c: true, d: false }]); // => 't-text-a t-text-b t-text-c'
 // 合并传入的class
-classNames('foo', genClass({ bar: true }) // =>  'foo a-text-bar'
+classNames('foo', genClass({ bar: true }) // =>  'foo t-text-bar'
 ```
