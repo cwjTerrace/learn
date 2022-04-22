@@ -2,13 +2,13 @@
 import * as assert from "assert";
 import cls from "..";
 
-const createClass = cls("kc-", "-");
+const createClass = cls("t-", "-");
 
 const [prefix, genClass, classNames] = createClass("test");
 
 describe("genClass", function () {
-  it("should aaa ", function () {
-    assert.equal(prefix, "kc-test");
+  it("should get prefix", function () {
+    assert.equal(prefix, "t-test");
   });
 
   it("keeps object keys with truthy values", function () {
@@ -21,20 +21,20 @@ describe("genClass", function () {
         e: undefined,
         f: 1
       }),
-      "kc-test-a kc-test-f"
+      "t-test-a t-test-f"
     );
   });
 
   it("joins arrays of class names and ignore falsy values", function () {
-    assert.equal(genClass("a", 0, null, undefined, true, 1, "b"), "kc-test-a kc-test-1 kc-test-b");
+    assert.equal(genClass("a", 0, null, undefined, true, 1, "b"), "t-test-a t-test-1 t-test-b");
   });
 
   it("supports heterogenous arguments", function () {
-    assert.equal(genClass({ a: true }, "b", 0), "kc-test-a kc-test-b");
+    assert.equal(genClass({ a: true }, "b", 0), "t-test-a t-test-b");
   });
 
   it("should be trimmed", function () {
-    assert.equal(genClass("", "b", {}, ""), "kc-test-b");
+    assert.equal(genClass("", "b", {}, ""), "t-test-b");
   });
 
   it("returns an empty string for an empty configuration", function () {
@@ -42,89 +42,41 @@ describe("genClass", function () {
   });
 
   it("supports an array of class names", function () {
-    assert.equal(genClass(["a", "b"]), "kc-test-a kc-test-b");
+    assert.equal(genClass(["a", "b"]), "t-test-a t-test-b");
   });
 
   it("joins array arguments with string arguments", function () {
-    assert.equal(genClass(["a", "b"], "c"), "kc-test-a kc-test-b kc-test-c");
-    assert.equal(genClass("c", ["a", "b"]), "kc-test-c kc-test-a kc-test-b");
+    assert.equal(genClass(["a", "b"], "c"), "t-test-a t-test-b t-test-c");
+    assert.equal(genClass("c", ["a", "b"]), "t-test-c t-test-a t-test-b");
   });
 
   it("handles multiple array arguments", function () {
-    assert.equal(genClass(["a", "b"], ["c", "d"]), "kc-test-a kc-test-b kc-test-c kc-test-d");
+    assert.equal(genClass(["a", "b"], ["c", "d"]), "t-test-a t-test-b t-test-c t-test-d");
   });
 
   it("handles arrays that include falsy and true values", function () {
-    assert.equal(genClass(["a", 0, null, undefined, false, true, "b"]), "kc-test-a kc-test-b");
+    assert.equal(genClass(["a", 0, null, undefined, false, true, "b"]), "t-test-a t-test-b");
   });
 
   it("handles arrays that include arrays", function () {
-    assert.equal(genClass(["a", ["b", "c"]]), "kc-test-a kc-test-b kc-test-c");
+    assert.equal(genClass(["a", ["b", "c"]]), "t-test-a t-test-b t-test-c");
   });
 
   it("handles arrays that include objects", function () {
-    assert.equal(genClass(["a", { b: true, c: false }]), "kc-test-a kc-test-b");
+    assert.equal(genClass(["a", { b: true, c: false }]), "t-test-a t-test-b");
   });
 
   it("handles deep array recursion", function () {
-    assert.equal(genClass(["a", ["b", ["c", { d: true }]]]), "kc-test-a kc-test-b kc-test-c kc-test-d");
+    assert.equal(genClass(["a", ["b", ["c", { d: true }]]]), "t-test-a t-test-b t-test-c t-test-d");
   });
 
   it("handles arrays that are empty", function () {
-    assert.equal(genClass("a", []), "kc-test-a");
+    assert.equal(genClass("a", []), "t-test-a");
   });
 
   it("handles nested arrays that have empty nested arrays", function () {
-    assert.equal(genClass("a", [[]]), "kc-test-a");
+    assert.equal(genClass("a", [[]]), "t-test-a");
   });
-
-  // it("handles all types of truthy and falsy property values as expected", function () {
-  //   assert.equal(
-  //     genClass({
-  //       // falsy:
-  //       null: null,
-  //       emptyString: "",
-  //       noNumber: NaN,
-  //       zero: 0,
-  //       negativeZero: -0,
-  //       false: false,
-  //       undefined: undefined,
-
-  //       // truthy (literally anything else):
-  //       nonEmptyString: "foobar",
-  //       whitespace: " ",
-  //       function: Object.prototype.toString,
-  //       emptyObject: {},
-  //       nonEmptyObject: { a: 1, b: 2 },
-  //       emptyList: [],
-  //       nonEmptyList: [1, 2, 3],
-  //       greaterZero: 1
-  //     }),
-  //     "nonEmptyString whitespace function emptyObject nonEmptyObject emptyList nonEmptyList greaterZero"
-  //   );
-  // });
-
-  // it("handles toString() method defined on object", function () {
-  //   assert.equal(
-  //     genClass({
-  //       toString: function () {
-  //         return "classFromMethod";
-  //       }
-  //     }),
-  //     "classFromMethod"
-  //   );
-  // });
-
-  // it("handles toString() method defined inherited in object", function () {
-  //   var Class1 = function () {};
-  //   var Class2: any = function () {}; // TODO 先给个any顶一下
-  //   Class1.prototype.toString = function () {
-  //     return "classFromMethod";
-  //   };
-  //   Class2.prototype = Object.create(Class1.prototype);
-
-  //   assert.equal(genClass(new Class2()), "classFromMethod");
-  // });
 });
 
 describe("classNames", function () {
