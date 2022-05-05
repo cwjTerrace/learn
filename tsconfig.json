@@ -15,10 +15,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
     "paths": {
       "@/utils": ["./utils"],
       "@/topic": ["./topic"]
     }
   },
-  "include": ["react-ui", "topic", "utils"]
+  "include": ["react-ui", "vue-ui", "topic", "utils"]
 }
