@@ -4,7 +4,7 @@ import Layout from "./layout";
 
 import SvgDemo from "./pages/svg-demo";
 
-import { flat, deepClone, classnames, myPromise } from "@/utils";
+import { deepClone, classnames, myPromise } from "@/utils";
 
 import { promiseRecursive } from "@/topic";
 
@@ -12,8 +12,6 @@ promiseRecursive().then((res) => {
   console.log("promiseRecursive", res);
 });
 
-const flatArr = flat([[1, 2, 3, , , [6666, 7777]], [2], 3]);
-console.log("结果:", flatArr);
 const symbol = Symbol("symbol");
 const obj = {
   [symbol]: "symbol",
@@ -57,7 +55,6 @@ new myPromise((resolve, rejects) => {
 const root = createRoot(document.getElementById("root")!);
 root.render(
   <Layout>
-    <div>new flatArr : {JSON.stringify(flatArr)}</div>
     <div>{classnames(obj)}</div>
     <SvgDemo color="#333" />
   </Layout>
