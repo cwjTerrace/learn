@@ -29,6 +29,7 @@
   "homepage": "https://cwjTerrace.github.io/learn",
   "dependencies": {
     "codemirror": "^5.65.0",
+    "jsonlint": "^1.6.3",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "lodash": "^4.17.21",
@@ -40,6 +41,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
+    "@types/codemirror": "^5.60.5",
     "@types/jest": "^27.0.3",
     "@types/lodash": "^4.14.178",
     "@types/react": "^18.0.9",

@@ -1,5 +1,7 @@
 import React, { PropsWithChildren } from "react";
 
+import "./index.less";
+
 interface IProps {
   style?: React.CSSProperties;
 }

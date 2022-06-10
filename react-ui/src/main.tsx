@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import Layout from "./layout";
 
-import SvgDemo from "./pages/svg-demo";
+import CodeEditor from "./components/CodeEditor";
 
 import { myPromise } from "@/utils";
 
@@ -25,6 +25,6 @@ new myPromise((resolve, rejects) => {
 const root = createRoot(document.getElementById("root")!);
 root.render(
   <Layout>
-    <SvgDemo color="#333" />
+    <CodeEditor color="#333" />
   </Layout>
 );
