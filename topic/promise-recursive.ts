@@ -108,3 +108,7 @@ const poll: () => Promise<"completed" | "error" | "timeout"> = async () => {
   return getStatus();
 };
  */
+
+poll().then((res) => {
+  console.log("promiseRecursive", res);
+});

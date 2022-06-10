@@ -15,12 +15,9 @@ import "codemirror/addon/lint/javascript-lint";
 
 import "./index.less";
 
-interface SvgDemoProps {
-  color: string;
-}
-
-function CodeEditor({ color }: SvgDemoProps) {
+function CodeEditor() {
   const textareaRef = useRef(null);
+  const iframeRef = useRef(null);
 
   useEffect(() => {
     console.log(textareaRef.current);
@@ -36,6 +33,10 @@ function CodeEditor({ color }: SvgDemoProps) {
     });
 
     editor.setValue(__CODE__);
+
+    // js
+    let script = document.getElementById("script-run"); //新标签<script id="sss"></script>来存储
+    script!.innerText = __CODE__;
   }, []);
 
   return (
