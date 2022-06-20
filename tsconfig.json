@@ -22,5 +22,5 @@
       "@/topic": ["./topic"]
     }
   },
-  "include": ["react-ui", "vue-ui", "topic", "utils", "typings.d.ts"]
+  "include": ["react-ui", "vue-ui", "topic", "utils"]
 }

@@ -29,6 +29,7 @@
   "homepage": "https://cwjTerrace.github.io/learn",
   "dependencies": {
     "codemirror": "^5.65.0",
+    "element-plus": "^2.2.5",
     "jsonlint": "^1.6.3",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",

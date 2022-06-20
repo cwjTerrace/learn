@@ -12,13 +12,6 @@ const config = defineConfig({
   plugins: [vue(), vueJsx()],
   build: {
     outDir: join(process.cwd(), "dist")
-  },
-  resolve: {
-    alias: {
-      "balm-ui-source": "balm-ui/src/scripts",
-      "balm-ui-plus-source": "balm-ui/src/scripts/plus.js",
-      "balm-ui-next-source": "balm-ui/src/scripts/next.js"
-    }
   }
 });
 
