@@ -56,6 +56,11 @@
     "jest": "^27.4.5",
     "ts-babel": "^6.1.7",
     "ts-jest": "^27.1.2",
-    "vite": "^2.9.9"
-  }
+    "vite": "3.0.0-alpha.13"
+  },
+  "browserslist": [
+    "last 1 version",
+    "cover 90%",
+    "not ie 11"
+  ]
 }
