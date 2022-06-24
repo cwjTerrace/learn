@@ -21,7 +21,7 @@
       "@/utils": ["./utils"],
       "@/topic": ["./topic"]
     },
-    "types": ["naive-ui/volar"]
+    "types": ["naive-ui/volar", "lodash", "codemirror", "jest", "react", "react-dom"]
   },
   "include": ["react-ui", "vue-ui", "topic", "utils"]
 }

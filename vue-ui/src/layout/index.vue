@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { defineComponent, reactive } from "vue";
-import { NCard, NDataTable } from "naive-ui";
 
 // const inputData = `#接龙
 
