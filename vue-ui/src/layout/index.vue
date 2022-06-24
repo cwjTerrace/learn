@@ -1,6 +1,6 @@
-<script lang="tsx">
+<script lang="ts" setup>
 import { defineComponent, reactive } from "vue";
-import { ElTable, ElTableColumn, ElCard } from "element-plus";
+import { NCard, NDataTable } from "naive-ui";
 
 // const inputData = `#接龙
 
@@ -26,7 +26,7 @@ import { ElTable, ElTableColumn, ElCard } from "element-plus";
 // 18. 5-2-902小番茄一份`;
 
 const inputData = `#接龙 快速接 我叫车了
-8424西瓜9斤及以上 一个28 
+8424西瓜9斤及以上 一个28
 美都无籽9斤及以上一个29
 
 1. 那拉提（内蒙古饶乐农场）
@@ -92,28 +92,42 @@ r?.slice(1).forEach((item, index) => {
   resultItem.product = productReg.exec(item)?.[1] || "";
 });
 
-export default defineComponent({
-  name: "layout",
-  setup(props) {
-    console.log(result);
-    // const result = reactive([]);
-
-    return () => (
-      <div className="layout">
-        <ElCard header="数据">
-          <ElTable data={result}>
-            <ElTableColumn prop="index" label="序号" width={80} />
-            <ElTableColumn prop="roomNo" label="门牌号" width={120} />
-            <ElTableColumn prop="product" label="产品" width={180} />
-            <ElTableColumn prop="count" label="数量" width={80} />
-            <ElTableColumn prop="original" label="原文" width={260} />
-          </ElTable>
-        </ElCard>
-      </div>
-    );
+const columns = [
+  {
+    title: "序号",
+    key: "index",
+    width: 80
+  },
+  {
+    title: "门牌号",
+    key: "roomNo",
+    width: 120
+  },
+  {
+    title: "产品",
+    key: "product",
+    width: 180
+  },
+  {
+    title: "数量",
+    key: "count",
+    width: 80
+  },
+  {
+    title: "原文",
+    key: "original",
+    width: 260
   }
-});
+];
 </script>
+
+<template>
+  <div className="layout">
+    <n-card header="数据">
+      <n-data-table :data="result" :columns="columns" />
+    </n-card>
+  </div>
+</template>
 
 <style lang="less" scoped>
 .layout {

@@ -20,7 +20,8 @@
     "paths": {
       "@/utils": ["./utils"],
       "@/topic": ["./topic"]
-    }
+    },
+    "types": ["naive-ui/volar"]
   },
   "include": ["react-ui", "vue-ui", "topic", "utils"]
 }

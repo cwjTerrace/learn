@@ -29,11 +29,11 @@
   "homepage": "https://cwjTerrace.github.io/learn",
   "dependencies": {
     "codemirror": "^5.65.0",
-    "element-plus": "^2.2.5",
     "jsonlint": "^1.6.3",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "lodash": "^4.17.21",
+    "naive-ui": "^2.30.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "typescript": "^4.5.4",
