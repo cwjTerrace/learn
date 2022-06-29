@@ -9,7 +9,10 @@
     "dev:react": "vite --config react-ui/vite.config.ts",
     "build:react": "tsc && vite build --config react-ui/vite.config.ts",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "docs:dev": "vitepress dev blog",
+    "docs:build": "vitepress build blog",
+    "docs:serve": "vitepress serve blog"
   },
   "repository": {
     "type": "git",
@@ -35,6 +38,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "typescript": "^4.5.4",
+    "vitepress": "1.0.0-alpha.4",
     "vue": "^3.2.36"
   },
   "devDependencies": {
