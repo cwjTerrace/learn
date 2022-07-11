@@ -10,7 +10,11 @@ import baseConfig from "../vite.config";
 const config = defineConfig({
   define: { __CODE__: JSON.stringify(readFileSync(join(process.cwd(), "utils", "deep-clone", "index.ts"), "utf-8")) },
   root: __dirname,
-  plugins: [react()],
+  plugins: [
+    react({
+      jsxRuntime: "automatic"
+    })
+  ],
   build: {
     outDir: join(process.cwd(), "dist")
   }
