@@ -1,12 +1,19 @@
-import React from "react";
 import { createRoot } from "react-dom/client";
-import Layout from "./layout";
 
-import CodeEditor from "./components/CodeEditor";
+import { HashRouter, Routes, Route } from "react-router-dom";
+
+import Layout from "./layout";
+// Pages
+import Home from "./pages/home";
 
 const root = createRoot(document.getElementById("root")!);
+
 root.render(
-  <Layout>
-    <CodeEditor />
-  </Layout>
+  <HashRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+      </Route>
+    </Routes>
+  </HashRouter>
 );

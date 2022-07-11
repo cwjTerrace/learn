@@ -4,9 +4,8 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  //   base: "/learn/",
   build: {
-    target: "es2021"
+    target: "es6"
   },
   resolve: {
     alias: [
