@@ -1,9 +1,9 @@
-import React, { PropsWithChildren } from "react";
+import { CSSProperties, PropsWithChildren } from "react";
 
 import "./index.less";
 
 interface IProps {
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
 
 function Layout(props: PropsWithChildren<IProps>) {

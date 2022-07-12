@@ -2,6 +2,7 @@ import { useEffect, ForwardedRef, forwardRef, useRef } from "react";
 
 // 核心文件
 import CodeMirror from "codemirror";
+
 import "codemirror/lib/codemirror.css";
 import "codemirror/mode/javascript/javascript"; // 代码高亮必须引入
 
@@ -18,6 +19,7 @@ import "./index.less";
 interface CodeEditorProps {}
 
 function CodeEditor(props: CodeEditorProps, ref: ForwardedRef<HTMLDivElement>) {
+  console.log(props);
   const textareaRef = useRef(null);
   const iframeRef = useRef(null);
 

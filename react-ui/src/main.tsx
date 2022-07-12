@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./layout";
 // Pages
@@ -10,11 +10,11 @@ const root = createRoot(document.getElementById("root")!);
 
 root.render(
   <Layout>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </Layout>
 );
 
