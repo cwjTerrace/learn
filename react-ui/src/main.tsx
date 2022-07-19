@@ -17,9 +17,3 @@ root.render(
     </HashRouter>
   </Layout>
 );
-
-// root.render(
-//   <Layout>
-//     <Home />
-//   </Layout>
-// );

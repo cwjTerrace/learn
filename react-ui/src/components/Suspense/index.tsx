@@ -1,7 +1,7 @@
-import { CSSProperties, memo, useState } from "react";
+import { Suspense, memo, ReactNode, useState } from "react";
 
 interface IProps {
-  style?: CSSProperties;
+  children?: ReactNode;
 }
 
 const useTestState = () => {
@@ -18,9 +18,9 @@ function MemoTest(props: IProps) {
   const memoState = useTestState();
 
   return (
-    <div style={props.style} {...props}>
-      {memoState}
-    </div>
+    <Suspense fallback={"loading...."}>
+      <div>{memoState}</div>
+    </Suspense>
   );
 }
 

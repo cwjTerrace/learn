@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
+    "types": ["naive-ui/volar", "lodash", "vitest/globals"]
+  },
+  "include": ["src"]
+}

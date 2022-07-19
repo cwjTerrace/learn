@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "types": ["lodash", "codemirror", "react", "react-dom", "vitest/globals"]
+  },
+  "include": ["src"]
+}
