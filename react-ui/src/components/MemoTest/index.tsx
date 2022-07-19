@@ -14,10 +14,14 @@ const useTestState = () => {
   return state;
 };
 
-function MemoTest(props: PropsWithChildren<IProps>) {
+function MemoTest(props: IProps) {
   const memoState = useTestState();
 
-  return <div style={props.style}>{memoState}</div>;
+  return (
+    <div style={props.style} {...props}>
+      {memoState}
+    </div>
+  );
 }
 
 export default memo(MemoTest);
