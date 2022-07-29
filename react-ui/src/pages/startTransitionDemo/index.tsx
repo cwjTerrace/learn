@@ -150,7 +150,7 @@ function StartTransitionDemo() {
         </svg>
       </div>
       <div className="explanation">
-        <h1>这个演示展示了什么？</h1>
+        <h1>这个Demo展示了什么？</h1>
         <p>
           演示向您展示了当每个状态更改更新1,000,000多个节点时发生的情况。左边的滑块增长
           树让问题变得更糟，呈指数增长。顶部的滑块倾斜树，更新每个节点。用它来看看 :会发生什么)
@@ -161,6 +161,8 @@ function StartTransitionDemo() {
         </p>
         <p>如果没有看到慢速，则启用人为的0.1ms延迟。</p>
       </div>
+
+      <a href="https://react-fractals-git-react-18-swizec.vercel.app/">查看原地址</a>
     </div>
   );
 }
