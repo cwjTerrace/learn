@@ -13,6 +13,7 @@ specifiers:
   '@vuedx/typescript-plugin-vue': ^0.7.5
   assert: ^2.0.0
   codemirror: ^5.65.0
+  d3-interpolate: ^3.0.1
   jsonlint: ^1.6.3
   less: ^4.1.2
   less-loader: ^10.2.0
@@ -32,6 +33,7 @@ specifiers:
 
 dependencies:
   codemirror: 5.65.6
+  d3-interpolate: 3.0.1
   jsonlint: 1.6.3
   less: 4.1.3
   less-loader: 10.2.0_less@4.1.3
@@ -2233,6 +2235,18 @@ packages:
 
   /csstype/3.1.0:
     resolution: {integrity: sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==}
+
+  /d3-color/3.1.0:
+    resolution: {integrity: sha512-zg/chbXyeBtMQ1LbD/WSoW2DpC3I0mpmPdW+ynRTj/x2DAWYrIY7qeZIHidozwV24m4iavr15lNwIwLxRmOxhA==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /d3-interpolate/3.0.1:
+    resolution: {integrity: sha512-3bYs1rOD33uo8aqJfKP3JWPAibgw8Zm2+L9vBKEHJ2Rg+viTR7o5Mmv5mZcieN+FRYaAOWX5SJATX6k1PWz72g==}
+    engines: {node: '>=12'}
+    dependencies:
+      d3-color: 3.1.0
+    dev: false
 
   /date-fns-tz/1.3.5_date-fns@2.28.0:
     resolution: {integrity: sha512-SNhl/fWe7i2HoIB9ejLZhEEJ6ZtRRpOBbzizFrq11K2/iceS9Nk7fPN2VTYVOMgFB9u0f3eidSC4n1xaRONW2A==}
