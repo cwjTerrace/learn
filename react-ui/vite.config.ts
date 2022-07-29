@@ -7,8 +7,11 @@ import react from "@vitejs/plugin-react";
 
 import baseConfig from "../vite.config";
 
+// const __CODE__ = readFileSync(join(process.cwd(), "utils", "deep-clone", "index.ts"), "utf-8");
+const __CODE__ = readFileSync(join(process.cwd(), "react-ui/src/pages/startTransitionDemo/index.tsx"), "utf-8");
+
 const config = defineConfig({
-  define: { __CODE__: JSON.stringify(readFileSync(join(process.cwd(), "utils", "deep-clone", "index.ts"), "utf-8")) },
+  define: { __CODE__: JSON.stringify(__CODE__) },
   root: __dirname,
   plugins: [react()],
   build: {

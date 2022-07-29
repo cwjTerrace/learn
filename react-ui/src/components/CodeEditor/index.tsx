@@ -1,4 +1,4 @@
-import { useEffect, ForwardedRef, forwardRef, useRef } from "react";
+import React, { useEffect, ForwardedRef, forwardRef, useRef } from "react";
 
 // 核心文件
 import CodeMirror from "codemirror";
@@ -16,7 +16,9 @@ import "codemirror/addon/lint/javascript-lint";
 
 import "./index.less";
 
-interface CodeEditorProps {}
+interface CodeEditorProps {
+  style?: React.CSSProperties;
+}
 
 function CodeEditor(props: CodeEditorProps, ref: ForwardedRef<HTMLDivElement>) {
   console.log(props);
@@ -44,7 +46,7 @@ function CodeEditor(props: CodeEditorProps, ref: ForwardedRef<HTMLDivElement>) {
   }, []);
 
   return (
-    <div className="code-editor" ref={ref}>
+    <div className="code-editor" ref={ref} {...props}>
       <textarea ref={textareaRef}></textarea>
     </div>
   );
