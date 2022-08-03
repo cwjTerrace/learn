@@ -65,7 +65,6 @@ function StartTransitionDemo() {
     <>
       <div className="start-transition-demo">
         <div className="header" style={{ marginBottom: "1rem" }}>
-          {/* <LagRadar /> */}
           <h2 style={{ marginTop: "-0.2rem" }}>
             这是一棵倾斜的毕达哥拉斯树
             <br />
