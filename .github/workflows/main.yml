@@ -21,7 +21,7 @@ jobs:
         node-version: 16
         cache: 'pnpm'
 
-    - run: pnpm install
+    - run: pnpm install --registry=http://registry.npm.taobao.org 
     - run: pnpm run build:react
 
     - name: Deploy 🚀
