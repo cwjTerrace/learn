@@ -165,7 +165,7 @@ function StartTransitionDemo() {
 
         <a href="https://react-fractals-git-react-18-swizec.vercel.app/">查看原地址</a>
       </div>
-      <CodeEditor style={{ flexBasis: 800 }} />
+      <CodeEditor />
     </>
   );
 }

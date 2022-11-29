@@ -1,55 +1,28 @@
-import React, { useEffect, ForwardedRef, forwardRef, useRef } from "react";
+import { useEffect, forwardRef, useRef } from "react";
 
-// 核心文件
-import CodeMirror from "codemirror";
+import { EditorState } from "@codemirror/state";
+import { EditorView, keymap } from "@codemirror/view";
+import { javascript } from "@codemirror/lang-javascript";
+import { oneDark } from "@codemirror/theme-one-dark";
+import { defaultKeymap } from "@codemirror/commands";
 
-import "codemirror/lib/codemirror.css";
-import "codemirror/mode/javascript/javascript"; // 代码高亮必须引入
-
-// 主题
-import "codemirror/theme/abcdef.css";
-
-// 代码错误检查
-import "codemirror/addon/lint/lint.css";
-import "codemirror/addon/lint/lint";
-import "codemirror/addon/lint/javascript-lint";
-
-import "./index.less";
-
-interface CodeEditorProps {
-  style?: React.CSSProperties;
-}
-
-function CodeEditor(props: CodeEditorProps, ref: ForwardedRef<HTMLDivElement>) {
-  console.log(props);
-  const textareaRef = useRef(null);
-  const iframeRef = useRef(null);
+export const CodeEditor = () => {
+  const editor = useRef(null);
 
   useEffect(() => {
-    console.log(textareaRef.current);
-    const editor = CodeMirror.fromTextArea(textareaRef.current!, {
-      mode: "javascript",
-      theme: "abcdef", // 主日样式
-      lint: true,
-      tabSize: 2,
-      smartIndent: true, // 是否智能缩进
-      lineNumbers: true, // 显示行号
-      gutters: ["CodeMirror-lint-markers"],
-      lineWrapping: true // 自动换行
+    const startState = EditorState.create({
+      doc: __CODE__,
+      extensions: [keymap.of(defaultKeymap), oneDark, javascript()]
     });
 
-    editor.setValue(__CODE__);
+    const view = new EditorView({ state: startState, parent: editor.current! });
 
-    // js
-    let script = document.getElementById("script-run"); //新标签<script id="sss"></script>来存储
-    script!.innerText = __CODE__;
+    return () => {
+      view.destroy();
+    };
   }, []);
 
-  return (
-    <div className="code-editor" ref={ref} {...props}>
-      <textarea ref={textareaRef}></textarea>
-    </div>
-  );
-}
+  return <div ref={editor}></div>;
+};
 
-export default forwardRef<HTMLDivElement, CodeEditorProps>(CodeEditor);
+export default forwardRef<HTMLDivElement>(CodeEditor);
