@@ -1,7 +1,7 @@
 type Resolve = (value: any) => void;
 type Reject = (error: any) => void;
 
-class myPromise {
+class MyPromise {
   _callback?: (value: any) => void;
 
   constructor(callback: (resolve: Resolve, reject: Reject) => void) {
@@ -23,9 +23,9 @@ class myPromise {
   }
 }
 
-export default myPromise;
+export default MyPromise;
 
-new myPromise((resolve, rejects) => {
+new MyPromise((resolve, rejects) => {
   console.log(Date.now());
   setTimeout(() => {
     console.log(Date.now());

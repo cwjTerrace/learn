@@ -1,6 +1,7 @@
 import classnames from "./classnames";
 import deepClone from "./deep-clone";
 import flat from "./flat";
-import myPromise from "./promise";
+import MyPromise from "./promise";
+import TaskQueue from "./task-queue";
 
-export { classnames, deepClone, flat, myPromise };
+export { TaskQueue, classnames, deepClone, flat, MyPromise };
