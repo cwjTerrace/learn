@@ -18,19 +18,18 @@ class MyPromise {
   }
 
   then(callback: (value: any) => void) {
-    console.log(111, callback);
     this._callback = callback;
   }
 }
 
 export default MyPromise;
 
-new MyPromise((resolve, rejects) => {
-  console.log(Date.now());
-  setTimeout(() => {
-    console.log(Date.now());
-    resolve("willem");
-  }, 2000);
-}).then((value) => {
-  console.log(value);
-});
+// new MyPromise((resolve, rejects) => {
+//   console.log(Date.now());
+//   setTimeout(() => {
+//     console.log(Date.now());
+//     resolve("willem");
+//   }, 2000);
+// }).then((value) => {
+//   console.log(value);
+// });
