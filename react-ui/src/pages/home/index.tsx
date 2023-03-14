@@ -10,21 +10,36 @@ const delayTask = (delay = 1) => {
 };
 
 const taskQueues = new TaskQueue();
-const r: number[] = [];
-taskQueues.push(async () => r.push(await delayTask(5)));
-taskQueues.push(async () => r.push(await delayTask(3)));
-taskQueues.push(async () => r.push(await delayTask(1)));
-taskQueues.push(async () => r.push(await delayTask(2)));
-taskQueues.push(async () => r.push(await delayTask(4)));
+let randomValues: number[] = [];
 
 function HomePage() {
-  const [result, setResult] = useState<number[] | null>(null);
+  const [result, setResult] = useState<number[]>([]);
+
+  const onMessage = (delay: number) => {
+    taskQueues.push(async () => {
+      await delayTask(delay);
+      setResult((r) => [...r, delay]);
+    });
+  };
+
   useEffect(() => {
-    setTimeout(() => {
-      setResult(r);
-    }, 3000);
+    const getRandom = () => Math.floor(Math.random() * (5 - 1)) + 1;
+    const message = (delay: number) => {
+      randomValues.push(delay);
+      setTimeout(() => {
+        onMessage(delay);
+        if (randomValues.length >= 5) return;
+        message(getRandom());
+      });
+    };
+    message(getRandom());
   }, []);
-  return <div className="home-page">结果： {JSON.stringify(result)}</div>;
+  return (
+    <div className="home-page">
+      <div>结果： {JSON.stringify(result)}</div>
+      <div>{JSON.stringify(randomValues)}</div>
+    </div>
+  );
 }
 
 export default HomePage;

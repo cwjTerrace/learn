@@ -22,7 +22,7 @@ const classnames = (...args: ArgumentArray): string => {
     }
   }
   // 拍平后只剩下 Mapping | Value 两种数据类型
-  const flatArr = args.flat(Infinity);
+  const flatArr = args.flat(10) as Array<Mapping | Value>;
 
   flatArr.forEach((i: Mapping | Value) => {
     toArr(i);
