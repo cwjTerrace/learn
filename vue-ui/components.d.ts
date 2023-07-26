@@ -3,6 +3,8 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 import '@vue/runtime-core'
 
+export {}
+
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     NButton: typeof import('naive-ui')['NButton']
@@ -10,6 +12,3 @@ declare module '@vue/runtime-core' {
     NDataTable: typeof import('naive-ui')['NDataTable']
   }
 }
-
-
-export {}

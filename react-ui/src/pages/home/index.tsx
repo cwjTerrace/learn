@@ -1,5 +1,12 @@
+import { Button, Tooltip } from "antd";
 import { TaskQueue } from "@/utils";
-import { useEffect, useState, PropsWithChildren, Children } from "react";
+import { useEffect, useState, useRef, PropsWithChildren, Children } from "react";
+
+import { css } from "@linaria/core";
+
+const resultStyle = css`
+  margin: 10px 0;
+`;
 
 const delayTask = (delay = 1) => {
   return new Promise<number>((resolve) => {
@@ -11,12 +18,6 @@ const delayTask = (delay = 1) => {
 
 const taskQueues = new TaskQueue();
 let randomValues: number[] = [];
-
-const Button = (props: PropsWithChildren) => {
-  const childNodes = Children.toArray(props.children);
-  console.log(childNodes, props.children, "props.children");
-  return <div>{props.children}</div>;
-};
 
 function HomePage() {
   const [result, setResult] = useState<number[]>([]);
@@ -42,13 +43,11 @@ function HomePage() {
   }, []);
   return (
     <div className="home-page">
-      <div>结果： {JSON.stringify(result)}</div>
+      <div className={resultStyle}>结果： {JSON.stringify(result)}</div>
       <div>{JSON.stringify(randomValues)}</div>
-      <Button>
-        <>{false}</>
-        {false}
-        {false}
-      </Button>
+      <Tooltip title="12312312">
+        <Button disabled className="1231">按钮</Button>
+      </Tooltip>
     </div>
   );
 }
