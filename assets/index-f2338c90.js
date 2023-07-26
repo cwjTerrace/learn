@@ -1,0 +1,1 @@
+import{r as t,j as n}from"./index-6b4d23c3.js";const a=e=>new Promise(s=>setTimeout(()=>s({id:e,name:`用户${e}`,age:10+e}),3e3)),u=e=>{const[s,r]=t.useState({});return t.useEffect(()=>{a(e.id).then(o=>r(o))},[e.id]),console.log(s),n("div",{children:["当前用户是: ",s.name]})};export{u as default};
