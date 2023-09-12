@@ -9,6 +9,7 @@ import StartTransitionDemo from "./pages/startTransitionDemo";
 import SuspenseDemo from "./pages/suspenseDemo";
 import Throttle from "./pages/throttle";
 import CodeEditor from "./pages/codeEditor";
+import Commission from "./pages/commission";
 
 const root = createRoot(document.getElementById("root")!);
 
@@ -21,6 +22,7 @@ root.render(
         <Route path="/suspense-demo" element={<SuspenseDemo />} />
         <Route path="/throttle" element={<Throttle />} />
         <Route path="/code-editor" element={<CodeEditor />} />
+        <Route path="/commission" element={<Commission />} />
       </Routes>
     </HashRouter>
   </Layout>

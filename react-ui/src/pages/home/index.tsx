@@ -2,12 +2,6 @@ import { Button, Tooltip } from "antd";
 import { TaskQueue } from "@/utils";
 import { useEffect, useState, useRef, PropsWithChildren, Children } from "react";
 
-import { css } from "@linaria/core";
-
-const resultStyle = css`
-  margin: 10px 0;
-`;
-
 const delayTask = (delay = 1) => {
   return new Promise<number>((resolve) => {
     setTimeout(() => {
@@ -43,10 +37,12 @@ function HomePage() {
   }, []);
   return (
     <div className="home-page">
-      <div className={resultStyle}>结果： {JSON.stringify(result)}</div>
+      <div>结果： {JSON.stringify(result)}</div>
       <div>{JSON.stringify(randomValues)}</div>
       <Tooltip title="12312312">
-        <Button disabled className="1231">按钮</Button>
+        <Button disabled className="1231">
+          按钮
+        </Button>
       </Tooltip>
     </div>
   );
