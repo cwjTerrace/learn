@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from "vue";
+import qs from "qs";
 const rooms: string[][] = reactive([]);
 
 function handleClick() {
@@ -48,6 +49,7 @@ function getRandomInt(min: number, max: number) {
 
 <template>
   <div className="layout">
+    {{ qs.parse('a=1&b=2=&c=3') }}
     <n-card title="随机结果">
       <div v-for="(room, index) in rooms">房间{{ index + 1 }}:{{ JSON.stringify(room) }}</div>
 
